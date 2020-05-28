@@ -10,6 +10,7 @@
 
 <h2>Exercice 1</h2>
 
+
 <h2>Exercice 2</h2>
 
 <?php
