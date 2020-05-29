@@ -10,6 +10,20 @@
 
 <h2>Exercice 1</h2>
 
+<h3>Entrez votre prénom:</h3>
+<form method='POST'>
+ <input type="text" name="name">
+ <input type="submit" value="Envoyer">
+ </form>
+<?php
+$name = "";
+if (!empty($_POST)) {
+    $name = $_POST['name'];
+    echo '<h3> Hello'.$name.'</h3>';
+}
+
+
+?>
 
 <h2>Exercice 2</h2>
 
@@ -66,18 +80,18 @@ echo "La racine de 77 est ".$racine;
 <h2>Exercice 7</h2>
 
 <?php
-$chaine = "le PHP c'est trop cool!";
-echo "Chaine de base: ".$chaine."<br>";
-echo "Chaine qu'avec des majuscules: ".strtoupper($chaine)."<br>";
-echo "Chaine qu'avec des minuscules: ".strtolower($chaine)."<br>";
-echo "Chaine avec le premier caractère en majuscule: ".ucfirst($chaine)."<br>";
-echo "Chaine avec une majuscule à tous les mots: ".ucwords($chaine)."<br>";
+    $chaine = "le PHP c'est trop cool!";
+    echo "Chaine de base: ".$chaine."<br>";
+    echo "Chaine qu'avec des majuscules: ".strtoupper($chaine)."<br>";
+    echo "Chaine qu'avec des minuscules: ".strtolower($chaine)."<br>";
+    echo "Chaine avec le premier caractère en majuscule: ".ucfirst($chaine)."<br>";
+    echo "Chaine avec une majuscule à tous les mots: ".ucwords($chaine)."<br>";
 ?>
 
 <h2>Exercice 8</h2>
 
 <?php
-    $nb = array();
+    $nb = [];
     for ($i=0; $i <31 ; $i++) { 
         $nb[] = $i;
     }
@@ -88,14 +102,16 @@ echo "Chaine avec une majuscule à tous les mots: ".ucwords($chaine)."<br>";
 <h2>Exercice 9</h2>
 
 <?php
-    $nb = array();
-    for ($i=0; $i <31 ; $i++) { 
+    $nb = [];
+    for ($i=0; $i < 100 ; $i++) { 
         $nb[] = $i;
     }
 
     foreach ($nb as $element) {
         if ($element < 10) {
             echo "0".$element.",";
+        }elseif($element == 99){
+            echo $element;
         }else{
             echo $element.",";
         }
