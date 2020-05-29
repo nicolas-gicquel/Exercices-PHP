@@ -1,6 +1,7 @@
 <?php
 //On démarre une nouvelle session
 session_start();
+setcookie('pseudo', 'Taliesen', time() + 3600, null, null, false, true); // Le cookie sera valable une heure
 
 //On définit des variables de session
 $_SESSION['prenom'] = 'Pierre';
