@@ -14,7 +14,8 @@ session_start();
     <?php
     echo 'Bonjour ' . $_SESSION['prenom'] . ',
            tu as ' . $_SESSION['age'] . ' ans';
-
+    echo $_COOKIE['pseudo'];
+    echo $_COOKIE['pays'];
     ?>
 </body>
 
