@@ -2,7 +2,7 @@
 //On démarre une nouvelle session
 session_start();
 setcookie('pseudo', 'Taliesen', time() + 3600, null, null, false, true); // Le cookie sera valable une heure
-
+setcookie('pays', 'France', time() + 365*24*3600, null, null, false, true);
 //On définit des variables de session
 $_SESSION['prenom'] = 'Pierre';
 $_SESSION['age'] = 29;
