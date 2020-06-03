@@ -109,8 +109,11 @@ function identite(){
         "Dupont"=>array("prenom"=>"Paul","ville"=>"Paris","age"=>27),
         "Schmoll"=>array("prenom"=>"Kirk","ville"=>"Berlin","age"=>35),
         "Smith"=>array("prenom"=>"Stan","ville"=>"Londres","age"=>45));
+
         
     foreach ($tab as $nom => $value) {
         echo "Bonjour, je m'appelle ".$value['prenom']." ".$nom.", j'ai ".$value['age']." ans et j'habite à ".$value['ville'].".<br>";
     }
+
+
 }
