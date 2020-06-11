@@ -1,0 +1,10 @@
+.formArea textarea,
+.inputSubmit {
+    display: block;
+    margin: 1em;
+}
+
+label,
+{
+    padding-left: 1em;
+}
