@@ -35,6 +35,7 @@ try{
     
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
    
+    //2- On récupère les données du formulaire
     $pseudo = $_POST['pseudo'];
     $message = $_POST['message'];
 
