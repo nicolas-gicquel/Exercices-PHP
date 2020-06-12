@@ -19,7 +19,7 @@
     </form>
 
     <?php
-    //On récupère les informations dans la base de données
+    //7- On récupère les informations dans la base de données
       try {
         $pdo = new PDO(
           'mysql:host=localhost;dbname=minichat;port=3308',
