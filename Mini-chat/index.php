@@ -10,7 +10,7 @@
 
 <body>
     <h1>TP Mini-chat OpenClassRoom</h1>
-
+  <!-- 1- On crée le formulaire -->
     <form class="formArea" action="form.php" method="post">
         <label for="pseudo">Pseudo:</label>
         <input type="text" name="pseudo" width="200"/>
@@ -19,6 +19,7 @@
     </form>
 
     <?php
+    //On récupère les informations dans la base de données
       try {
         $pdo = new PDO(
           'mysql:host=localhost;dbname=minichat;port=3308',
