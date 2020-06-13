@@ -7,6 +7,7 @@
     <title>Ma petite boutique</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
@@ -45,7 +46,7 @@
           foreach ($resultat as $key => $value) { ?>
 
             <div class="row">
-    <div class="col s12 m7">
+    <div class="col s12 m4">
       <div class="card">
         <div class="card-image">
           <img src="<?php echo $value['image']?>">
@@ -55,21 +56,23 @@
           <p><?php echo $value['description'] ?></p>
         </div>
         <div class="card-action">
-        <?php echo $value['price']."€" ?>
+        <span><?php echo $value['price']."€" ?></span>
         </div>
       </div>
     </div>
-  </div>
+  
             
           
         
         
-        <?php }
+        <?php } ?>
+
+</div>
           
 
         
 
-
+<?php
       } catch (PDOException $e) {
         echo "Erreur : " . $e->getMessage();
       }
