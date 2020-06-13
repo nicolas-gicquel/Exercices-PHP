@@ -95,7 +95,7 @@ try{
     $description = $_POST['description'];
     $category = $_POST['category'];
     $image = "uploads/".$_FILES["fileToUpload"]["name"];
-    var_dump($_FILES["fileToUpload"]["name"]);
+
 
 
  
