@@ -97,8 +97,6 @@ try{
     $image = "uploads/".$_FILES["fileToUpload"]["name"];
 
 
-
- 
    //$sth appartient à la classe PDOStatement
     $sth = $pdo->prepare("
         INSERT INTO products(name,price,description,category,image)
