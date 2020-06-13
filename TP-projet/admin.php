@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    
+
 
 </head>
 
@@ -18,7 +18,7 @@
         <div class="nav-wrapper">
             <a href="index.php" class="brand-logo">Logo</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="sass.html">Ma petite boutique</a></li>
+                <li><a href="index.php">Ma petite boutique</a></li>
                 <li><a href="badges.html">Déconnexion</a></li>
             </ul>
         </div>
@@ -60,8 +60,8 @@
                         </div>
                     </div>
                     <button class="btn waves-effect waves-light" type="submit" name="action">Ajouter le produit
-    <i class="material-icons right ">add</i>
-  </button>
+                        <i class="material-icons right ">add</i>
+                    </button>
                 </form>
         </div>
         <div class="col s2"></div>
@@ -73,13 +73,13 @@
     <br>
     <br>
     <footer class="page-footer">
-          <div class="footer-copyright">
+        <div class="footer-copyright">
             <div class="container">
-            © 2020 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">Créé par Nicolas Gicquel - Arinfo Saint Nazaire</a>
+                © 2020 Copyright Text
+                <a class="grey-text text-lighten-4 right" href="#!">Créé par Nicolas Gicquel - Arinfo Saint Nazaire</a>
             </div>
-          </div>
-        </footer>
+        </div>
+    </footer>
 
 </body>
 
