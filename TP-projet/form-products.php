@@ -115,4 +115,6 @@ try{
 catch(PDOException $e){
     echo "Erreur : " . $e->getMessage();
 }
+
+header('location:admin.php');
 ?>
