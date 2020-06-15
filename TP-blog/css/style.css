@@ -1,0 +1,46 @@
+.containerPost {
+    max-width: 800px;
+    display: block;
+    margin: auto;
+    margin-bottom: 1em;
+    background-color: rgb(177, 194, 194);
+    border-radius: 10px;
+}
+
+.titrePost {
+    background-color: darkcyan;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
+    font-size: 1.4em;
+}
+
+.datePost {
+    float: right;
+}
+
+.contenuPost {
+    background-color: rgb(177, 194, 194);
+    border-radius: 0 0 10px 10px;
+    padding: 10px;
+    font-size: 1.3em;
+}
+
+.linkComment {
+    float: right;
+    margin-top: -25px;
+    padding: 10px;
+    font-weight: bold;
+    transition: 1s;
+}
+
+.linkComment:hover {
+    color: blue;
+    font-weight: bold;
+}
+
+.commentContainer {
+    /* display: none; */
+    /* height: 100px; */
+    padding: 0 10px 1px 10px;
+}
