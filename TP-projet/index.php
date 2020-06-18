@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -16,8 +18,11 @@
     <div class="nav-wrapper">
       <a href="index.php" class="brand-logo">Logo</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <?php if (isset($_SESSION['pseudo'])) {
+          echo "<li class='hello'>Bonjour " . $_SESSION['pseudo'] . "</h4></li>";
+        } ?>
         <li><a href="index.php">Ma petite boutique</a></li>
-        <li><a href="admin.php">Connexion</a></li>
+        <li><a href="login.php">Connexion</a></li>
       </ul>
     </div>
   </nav>

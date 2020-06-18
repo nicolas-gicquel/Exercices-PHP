@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -19,9 +21,13 @@
     <nav>
         <div class="nav-wrapper">
             <a href="index.php" class="brand-logo">Logo</a>
+
             <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <?php if (isset($_SESSION['pseudo'])) {
+                    echo "<li class='hello'>Bonjour " . $_SESSION['pseudo'] . "</h4></li>";
+                } ?>
                 <li><a href="index.php">Ma petite boutique</a></li>
-                <li><a href="index.php">Déconnexion</a></li>
+                <li><a href="logout.php">Déconnexion</a></li>
             </ul>
         </div>
     </nav>
@@ -68,12 +74,32 @@
         </div>
         <div class="col s2"></div>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <h2 class="center-align">Ajouter un nouvel utilisateur</h2>
+    <div class="row center-align">
+        <div class="col s2"></div>
+        <div class="col s8">
+            <form action="form-users.php" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="name">Pseudo</label>
+                        <input type="text" name="pseudo" class="validate" />
+                    </div>
+
+                </div>
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="name">Mot de passe</label>
+                            <input type="password" name="mdp" class="validate" />
+                        </div>
+                    </div>
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Ajouter le produit
+                        <i class="material-icons right ">add</i>
+                    </button>
+                </form>
+        </div>
+        <div class="col s2"></div>
+    </div>
     <footer class="page-footer">
         <div class="footer-copyright">
             <div class="container">
