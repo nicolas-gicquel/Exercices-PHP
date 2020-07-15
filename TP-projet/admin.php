@@ -1,4 +1,30 @@
-<?php session_start(); ?>
+<?php session_start(); 
+
+if (isset($_SESSION['pseudo'])) {
+}else {
+    header('location:login.php');
+}
+try {
+    $pdo = new PDO(
+      'mysql:host=localhost;dbname=miniboutique;port=3308',
+      'root',
+      '',
+      array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
+    );
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    /*Sélectionne toutes les valeurs dans la table users*/
+    $sth = $pdo->prepare("SELECT * FROM products");
+    $sth->execute();
+
+
+    $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    echo "Erreur : " . $e->getMessage();
+  }
+
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,7 +46,7 @@
 
     <nav>
         <div class="nav-wrapper">
-            <a href="index.php" class="brand-logo">Logo</a>
+            <a href="index.php" class="brand-logo"><img class="logo" src='uploads/logo.png' /></a>
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <?php if (isset($_SESSION['pseudo'])) {
@@ -74,6 +100,31 @@
         </div>
         <div class="col s2"></div>
     </div>
+
+    <table>
+        <tr>
+            <th>Nom du produit</th>
+            <th>Description</th>
+            <th>Prix</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+<?php foreach ($resultat as $key => $value) { ?>
+        <tr>
+            <td><?php echo $value['name'] ?></td>
+            <td><?php echo $value['description'] ?></td>
+            <td><?php echo $value['price'] ?>€</td>
+            <td><img src="<?php echo $value['image'] ?>" width=50 height=50></td>
+            <td><a href="updateProd.php?id=<?php echo $value['id'] ?>">Modifier</a></td>
+            <td><a href="deleteProd.php?id=<?php echo $value['id'] ?>">Supprimer</a></td>
+            <td></td>
+        </tr>
+  <?php  
+    }
+?>
+    </table>
+
     <h2 class="center-align">Ajouter un nouvel utilisateur</h2>
     <div class="row center-align">
         <div class="col s2"></div>
@@ -93,7 +144,7 @@
                             <input type="password" name="mdp" class="validate" />
                         </div>
                     </div>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Ajouter le produit
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Ajouter un utilisateur
                         <i class="material-icons right ">add</i>
                     </button>
                 </form>

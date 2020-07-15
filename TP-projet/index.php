@@ -16,7 +16,7 @@
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="index.php" class="brand-logo">Logo</a>
+    <a href="index.php" class="brand-logo"><img class="logo" src='uploads/logo.png' /></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <?php if (isset($_SESSION['pseudo'])) {
           echo "<li class='hello'>Bonjour " . $_SESSION['pseudo'] . "</h4></li>";

@@ -10,14 +10,15 @@ try{
 
 $pseudo = $_POST['pseudo'];
 
-$sql = $pdo->prepare('SELECT id, mdp FROM users WHERE pseudo = :pseudo');
+$sql = $pdo->prepare('SELECT * FROM users WHERE pseudo = :pseudo');
 $sql->execute(array(
     'pseudo' => $pseudo));
 $resultat = $sql->fetch();
-var_dump($resultat);
+
 
 // Comparaison du pass envoyé via le formulaire avec la base
 $isPasswordCorrect = password_verify($_POST['mdp'], $resultat['mdp']);
+
 
 if (!$resultat)
 {
@@ -44,6 +45,6 @@ else
     echo "Erreur : " . $e->getMessage();
 }
 
-echo $_SESSION['pseudo'];
+
 
 
