@@ -18,3 +18,8 @@
 .hello {
     font-weight: bolder;
 }
+
+.logo {
+    height: 150px;
+    margin-top: -67px;
+}

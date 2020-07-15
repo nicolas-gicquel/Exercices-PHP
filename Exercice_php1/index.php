@@ -242,7 +242,7 @@
     <h2>Exercice 15</h2>
 
     <h3>Avec while</h3>
-    <?php
+    <!-- <?php
     $nb = 9;
     $essais = 0;
     while ($i != $nb) {
@@ -251,21 +251,59 @@
         $essais++;
     }
     echo $essais . ' essais pour trouver ' . $nb;
-    ?>
+    ?> -->
 
     <h3>Avec for</h3>
 
     <?php
-    $nb2 = 152;
-    for ($essais = 0; $j != $nb2; $essais++) {
-        $j = rand(100, 999);
-        echo $j . '<br>';
-    }
-    echo $essais . ' essais pour trouver ' . $nb;
+    // $nb2 = 152;
+    // for ($essais = 0; $j != $nb2; $essais++) {
+    //     $j = rand(100, 999);
+    //     echo $j . '<br>';
+    // }
+    // echo $essais . ' essais pour trouver ' . $nb;
     
 var_dump(__DIR__);
 var_dump(__FILE__);
+
+$googleApiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Saint-Nazaire&units=metric&appid=7a28ac9b054e2ff1460f3bf30e33db92';
+
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_HEADER, 0);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_URL, $googleApiUrl);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt($ch, CURLOPT_VERBOSE, 0);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+$response = curl_exec($ch);
+
+curl_close($ch);
+$data = json_decode($response);
+$currentTime = time();
+var_dump($data);
 ?>
+
+<div class="report-container">
+        <h2><?php echo $data->name; ?> </h2>
+        <div class="time">
+            <div><?php echo date("l g:i a", $currentTime); ?></div>
+            <div><?php echo date("jS F, Y",$currentTime); ?></div>
+            
+        </div>
+        <div class="weather-forecast">
+            <img
+                src="http://openweathermap.org/img/w/<?php echo $data->weather[0]->icon; ?>.png"
+                class="weather-icon" /> 
+                <span class="min-temperature">T°max <?php echo $data->main->temp_max; ?>°C<br></span>
+                <span class="min-temperature">T°min <?php echo $data->main->temp_min; ?>°C</span>
+        </div>
+        <div class="time">
+            <div>Humidité: <?php echo $data->main->humidity; ?> %</div>
+            <div>Vent: <?php echo $data->wind->speed; ?> km/h</div>
+        </div>
+    </div>
+
 </body>
 
 </html>

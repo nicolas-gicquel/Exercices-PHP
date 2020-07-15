@@ -1,6 +1,6 @@
-<?php 
+<?php
 session_start();
-if(isset($_SESSION['pseudo'])){
+if (isset($_SESSION['pseudo'])) {
     header('location:admin.php');
 }
 ?>
@@ -36,17 +36,17 @@ if(isset($_SESSION['pseudo'])){
                     </div>
 
                 </div>
-                <form class="col s12">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <label for="name">Mot de passe</label>
-                            <input type="password" name="mdp" class="validate" />
-                        </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="name">Mot de passe</label>
+                        <input type="password" name="mdp" class="validate" />
                     </div>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Connexion
-                        <i class="material-icons right ">add</i>
-                    </button>
-                </form>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Connexion
+                    <i class="material-icons right ">add</i>
+                </button>
+            </form>
         </div>
         <div class="col s2"></div>
     </div>
