@@ -20,7 +20,7 @@
     <?php
     try {
         $pdo = new PDO(
-            'mysql:host=localhost;dbname=voitures;port=3308',
+            'mysql:host=localhost;dbname=voitures;port=3306',
             'root',
             '',
             array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
@@ -63,6 +63,7 @@
                         <label for="immatriculation">immatriculation</label>
                         <input type="text" name="immatriculation" class="validate" />
                     </div>
+                    
                 </div>
                 <div class="file-field input-field">
                     <div class="btn">
@@ -93,6 +94,7 @@
                     <th>Modele</th>
                     <th>Année</th>
                     <th>Immatriculation</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <?php
@@ -103,6 +105,7 @@
                     <td><?php echo $value['modele'] ?></td>
                     <td><?php echo $value['annee'] ?></td>
                     <td><?php echo $value['immatriculation'] ?></td>
+                    <td><a href="deleteVoiture.php?id=<?php echo $value['id_voiture'] ?>">Supprimer</a></td>
 
 
                 </tr>
@@ -147,7 +150,7 @@
 
                     </div>
                 </div>
-                <button class="btn waves-effect waves-light" type="submit" name="action">Ajouter une voiture
+                <button class="btn waves-effect waves-light" type="submit" name="action">Ajouter un client
                     <i class="material-icons right ">add</i>
                 </button>
             </form>

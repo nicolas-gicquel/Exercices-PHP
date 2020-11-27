@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Exercices PHP 1</title>
 </head>
-
 <body>
-
-
-    <h2>Exercice 1</h2>
+<h2>Exercice 1</h2>
     <?php
     $nom = "Martin";
     $anneeNaissance = 2000;
@@ -20,34 +16,29 @@
     echo 'Bonjour Mr ' . $nom . ' vous avez ' . $age . ' ans ';
     ?>
 
+<h2>Exercice 2</h2>
+<?php
+$note_maths = 15;
+$note_français = 12;
+$note_HG = 9;
 
-    <h2>Exercice 2</h2>
+$moyenne = ($note_maths + $note_français + $note_HG)/3;
 
+echo "La moyenne est de $moyenne/20";
+ ?>   
 
-    <?php
-    echo __FILE__;
-    ?>
-    <br>
+<h2>Exercice 3</h2>
 
-    <?php
+<?php
+$sexe = 'homme';
+if ($sexe = 'homme') {
+    echo 'Vous êtes un homme';
+} else {
+    echo 'Vous êtes une femme';
+}
+?>
 
-    echo 147 % 8;
-    $div = 147 / 8;
-    echo '<br>' . $div;
-    ?>
-
-    <h2>Exercice 3</h2>
-
-    <?php
-    $sexe = 'homme';
-    if ($sexe = 'homme') {
-        echo 'Vous êtes un homme';
-    } else {
-        echo 'Vous êtes une femme';
-    }
-    ?>
-
-    <h2>Exercice 4</h2>
+<h2>Exercice 4</h2>
 
     <?php
     $heure = 15;
@@ -61,7 +52,7 @@
 
     ?>
 
-    <h2>Exercice 5</h2>
+<h2>Exercice 5</h2>
 
     <?php
     $age = 22;
@@ -72,7 +63,7 @@
     }
     ?>
 
-    <h2>Exercice 6</h2>
+<h2>Exercice 6</h2>
 
     <?php
     $choice = 2;
@@ -91,9 +82,8 @@
             echo 'Ce choix n\'existe pas';
             break;
     }
-    ?>
 
-    <h2>Exercice 7</h2>
+    ?><h2>Exercice 7</h2>
 
     <?php
     $nb = 154;
@@ -104,39 +94,18 @@
     }
     ?>
 
-    <h2>Exercice 8</h2>
+<h2>Exercice 8</h2>
+<?php
+    $HT = 400;
+    $TTC = $HT + $HT * 0.2;
 
-    <?php
+    echo "Le prix hors taxe est $TTC";
+?>
+<h2>Exercice 9</h2>
+<?php
+        $montant = 99;
+        $devise = '£';
 
-    if (!empty($_POST)) {
-        $HT = $_POST['HT'];
-        if (is_numeric($HT)){
-            $TTC = $HT + $HT * 0.2;
-        }
-
-        if (empty($_POST['HT'])) {
-
-            $message = '<p>Veuillez indiquer un prix hors taxe svp !</p>';
-        } else {
-            $message = '<p>Le prix TTC est ' . $TTC . '€</p>';
-        }
-        echo $message;
-    }
-
-
-    ?>
-
-    <form action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES); ?>" method="post">
-        <input type="number" step="0.01" name="HT">
-        <input type="submit" value="Calculer">
-    </form>
-
-    <h2>Exercice 9</h2>
-
-    <?php
-    if (!empty($_GET)) {
-        $montant = $_GET['montant'];
-        $devise = $_GET['devise'];
         switch ($devise) {
             case '£':
                 $taux = 0.90;
@@ -149,53 +118,55 @@
             case 'F':
                 $taux = 6.56;
                 break;
-        }
 
-        if (is_numeric($montant)){
+
+            }
         $convert = $montant * $taux;
-        }
-        if (empty($_GET['montant'])) {
-            $message2 = '<p>Veuillez indiquer une somme !</p>';
-        } else {
-            $message2 = '<p>' . $montant . '€ vaux ' . $convert . ' ' . $devise . '</p>';
-        }
+       
+        $message2 = '<p>' . $montant . '€ vaux ' . $convert . ' ' . $devise . '</p>';
         echo $message2;
-    }
+     
+    
 
 
     ?>
-    <form action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES); ?>" method="get">
-        <input type="number" step="0.01" name="montant">
-        <select name="devise">
-            <option value="£">£</option>
-            <option value="$">$</option>
-            <option value="F">F</option>
-        </select>
-        <input type="submit" value="Calculer">
-    </form>
 
-    <h2>Exercice 10</h2>
+<h2>Exercice 10</h2>
 
-    <?php
-    $age = 32;
-    $sexe = "femme";
+<?php
+$age = 32;
+$sexe = "femme";
 
-    if ($age >= 18 && $age <= 25 && $sexe == "femme") {
+if ($age >= 18 && $age <= 25 && $sexe == "femme") {
+    echo "C'est bon!";
+} else {
+    echo "C'est pas bon!";
+}
+
+/*ou*/
+
+if ($age >= 18 && $age <= 25 ) {
+    if ($sexe == "femme") {
         echo "C'est bon!";
-    } else {
+    }else {
         echo "C'est pas bon!";
     }
-    ?>
+    
+} else {
+    echo "C'est pas bon!";
+}
+?>
 
-    <h2>Exercice 11</h2>
-    <?php
-    $i = 44000;
-    while ($i < 45000) {
-        echo $i . ' ';
-        $i += 10;
-    }
-    ?>
-    <h2>Exercice 12</h2>
+<h2>Exercice 11</h2>
+<?php
+$i = 44000;
+while ($i < 45000) {
+    echo $i . ' ';
+    $i += 10;
+}
+?>
+
+<h2>Exercice 12</h2>
 
     <?php
     for ($i = 1; $i <= 5; $i++) {
@@ -206,11 +177,11 @@
     }
     ?>
 
-    <h2>Exercice 13</h2>
+<h2>Exercice 13</h2>
 
     <?php
     $truc = 0;
-    while ($truc < 20) {
+    while ($truc <= 20) {
         if ($truc == 10) {
             echo "<strong style='color:red'>" . $truc . "</strong> ";
         } else {
@@ -220,7 +191,7 @@
     }
     ?>
 
-    <h2>Exercice 14</h2>
+<h2>Exercice 14</h2>
     <?php
     $chiffre = 4;
     if ($chiffre % 2 == 0) {
@@ -238,72 +209,30 @@
 
     ?>
 
+<h2>Exercice 15</h2>
 
-    <h2>Exercice 15</h2>
+<h3>Avec while</h3>
+<?php
+// $nb = 9;
+// $essais = 0;
+// while ($i != $nb) {
+//     $i = rand(0, 10);
+//     echo $i . '<br>';
+//     $essais++;
+// }
+// echo $essais . ' essais pour trouver ' . $nb;
+?> 
 
-    <h3>Avec while</h3>
-    <!-- <?php
-    $nb = 9;
-    $essais = 0;
-    while ($i != $nb) {
-        $i = rand(0, 10);
-        echo $i . '<br>';
-        $essais++;
-    }
-    echo $essais . ' essais pour trouver ' . $nb;
-    ?> -->
+<h3>Avec for</h3>
 
-    <h3>Avec for</h3>
-
-    <?php
-    // $nb2 = 152;
-    // for ($essais = 0; $j != $nb2; $essais++) {
-    //     $j = rand(100, 999);
-    //     echo $j . '<br>';
-    // }
-    // echo $essais . ' essais pour trouver ' . $nb;
+<?php
+$nb2 = 152;
+for ($essais = 0; $j != $nb2; $essais++) {
+    $j = rand(100, 999);
+    echo $j . '<br>';
+}
+echo $essais . ' essais pour trouver ' . $nb;
     
-var_dump(__DIR__);
-var_dump(__FILE__);
-
-$googleApiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Saint-Nazaire&units=metric&appid=7a28ac9b054e2ff1460f3bf30e33db92';
-
-$ch = curl_init();
-
-curl_setopt($ch, CURLOPT_HEADER, 0);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_URL, $googleApiUrl);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-curl_setopt($ch, CURLOPT_VERBOSE, 0);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-$response = curl_exec($ch);
-
-curl_close($ch);
-$data = json_decode($response);
-$currentTime = time();
-var_dump($data);
 ?>
-
-<div class="report-container">
-        <h2><?php echo $data->name; ?> </h2>
-        <div class="time">
-            <div><?php echo date("l g:i a", $currentTime); ?></div>
-            <div><?php echo date("jS F, Y",$currentTime); ?></div>
-            
-        </div>
-        <div class="weather-forecast">
-            <img
-                src="http://openweathermap.org/img/w/<?php echo $data->weather[0]->icon; ?>.png"
-                class="weather-icon" /> 
-                <span class="min-temperature">T°max <?php echo $data->main->temp_max; ?>°C<br></span>
-                <span class="min-temperature">T°min <?php echo $data->main->temp_min; ?>°C</span>
-        </div>
-        <div class="time">
-            <div>Humidité: <?php echo $data->main->humidity; ?> %</div>
-            <div>Vent: <?php echo $data->wind->speed; ?> km/h</div>
-        </div>
-    </div>
-
 </body>
-
 </html>

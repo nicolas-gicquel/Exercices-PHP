@@ -13,7 +13,7 @@
 <h1>Exercice 1</h1>
 
 <?php
-    increment(21);
+    increment(15);
 ?>
 
 <h1>Exercice 2</h1>

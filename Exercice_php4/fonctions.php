@@ -38,6 +38,17 @@ function aireRectangle($hauteur,$largeur){
     echo "L'aire d'un rectangle ayant une hauteur de ".$hauteur."cm et une largeur de ".$largeur."cm est de ".$aire."cm²";
 }
 
+//Exercice 4
+
+do {
+    $nb1 = rand(0,9);
+    $nb2 = rand(0,9);
+    $nb3 = rand(0,9);
+    $somme = $nb1 + $nb2 + $nb3;
+} while ($somme != 10);
+    echo "$nb1,$nb2,$nb3";
+
+
 //Exercice 5
 
 function racine(){
@@ -51,6 +62,17 @@ function racine(){
             }
         }
     }
+}
+
+/*ou la solution d'Alyssa*/
+
+for ($i = 1; $i <= 100; $i++) {
+    $racine = sqrt($i);
+    if (filter_var($racine, FILTER_VALIDATE_INT)) 
+    {
+        echo("$racine est la racinde de $i <br/>");
+    } 
+    // else {echo " $racine n'est pas bon <br/>";}
 }
 
 //Exercice 6
@@ -78,7 +100,7 @@ function whatstime() {
     setlocale(LC_TIME, 'fr_Fr');
     // $date = date("d/m/Y");
     $date = strftime('%A %d %B %Y');
-    $heure = date("H:i");
+    $heure = date("H:i:s");
     echo "Nous sommes le $date et il est $heure";
 }
 
@@ -111,9 +133,8 @@ function identite(){
         "Smith"=>array("prenom"=>"Stan","ville"=>"Londres","age"=>45));
 
         
-    foreach ($tab as $nom => $value) {
-        echo "Bonjour, je m'appelle ".$value['prenom']." ".$nom.", j'ai ".$value['age']." ans et j'habite à ".$value['ville'].".<br>";
+    foreach ($tab as $tab => $value) {
+        echo "Bonjour, je m'appelle ".$value['prenom']." ".$tab.", j'ai ".$value['age']." ans et j'habite à ".$value['ville'].".<br>";
     }
-
 
 }

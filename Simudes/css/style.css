@@ -1,0 +1,88 @@
+body {
+    min-height: 100vh;
+    margin: 0px;
+}
+
+header {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('../images/de-virtuel.jpg') no-repeat;
+    -webkit-background-size: cover;
+    /* pour anciens Chrome et Safari */
+    background-size: cover;
+    /* version standardisée */
+    min-height: 380px;
+}
+
+.blocTitle {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 75px
+}
+
+h1 {
+    font-family: 'Do Hyeon', sans-serif;
+}
+
+cite {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2em;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    margin: 0 20px 0 20px;
+    list-style-type: none;
+}
+
+.navbar-link {
+    /* font-weight: bold; */
+    font-family: 'Do Hyeon', sans-serif;
+}
+
+main {
+    background-size: 100%;
+    min-height: 400px;
+}
+
+main h1 {
+    text-align: center;
+}
+
+.results {
+    display: flex;
+    justify-content: center;
+}
+
+.circleCenter {
+    width: 300px;
+    border: 20px solid rgb(70, 47, 47);
+    background: forestgreen;
+    height: 300px;
+    border-radius: 50%;
+    color: rgb(14, 11, 11);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.total {
+    font-size: 10em;
+    font-weight: bold;
+    padding-bottom: 30px
+}
+
+.submit {
+    margin: auto;
+    margin-top: 30px;
+}
+
+@media screen and (max-width: 350px) {
+    .ml-auto {
+        display: none;
+    }
+}

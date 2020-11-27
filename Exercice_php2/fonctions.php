@@ -1,5 +1,6 @@
 <?php
-function whatstime($heure){
+function whatstime($heure)
+{
     if ($heure > 12 && $heure < 22) {
         echo 'C\'est l\'après midi!';
     } elseif ($heure >= 22 || $heure <= 6) {
@@ -8,14 +9,16 @@ function whatstime($heure){
         echo 'C\'est le matin!';
     }
 }
-function questionage($age){
+function questionage($age)
+{
     if ($age > 18) {
         echo 'Vous êtes majeur ';
     } else {
         echo 'Vous êtes mineur ';
     }
 }
-function choice($choice){
+function choice($choice)
+{
     switch ($choice) {
         case 1:
             echo 'Insérer';
@@ -33,16 +36,39 @@ function choice($choice){
     }
 }
 
-function multiple($nb){
+function multiple($nb)
+{
     if ($nb % 3 == 0 && $nb % 5 == 0) {
         echo $nb . " est un multiple de 3 et 5";
     } else {
         echo $nb . " n'est pas un multiple de 3 et 5";
     }
 }
-function formHT(){
-    echo '<form action='.htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES).' method="post">';
-    echo '<input type="number" step="0.01" name="HT">';
-    echo '<input type="submit" value="Calculer">';
-    echo '</form>';
+function HT($HT)
+{
+    $TTC = $HT + $HT * 0.2;
+    echo "Le prix hors taxe de $HT euros est $TTC euros";
+}
+
+function convert($montant, $devise)
+{
+
+
+    switch ($devise) {
+        case '£':
+            $taux = 0.90;
+            break;
+
+        case '$':
+            $taux = 1.09;
+            break;
+
+        case 'F':
+            $taux = 6.56;
+            break;
+    }
+    $convert = $montant * $taux;
+
+    $message2 = '<p>' . $montant . '€ vaux ' . $convert . ' ' . $devise . '</p>';
+    echo $message2;
 }

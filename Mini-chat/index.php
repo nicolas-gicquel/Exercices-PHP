@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>TP Mini-chat OpenClassRoom</h1>
+    <h1>TP Mini-chat</h1>
   <!-- 1- On crée le formulaire -->
     <form class="formArea" action="form.php" method="post">
         <label for="pseudo">Pseudo:</label>
@@ -22,7 +22,7 @@
     //7- On récupère les informations dans la base de données
       try {
         $pdo = new PDO(
-          'mysql:host=localhost;dbname=minichat;port=3308',
+          'mysql:host=localhost;dbname=minichat;port=3306',
           'root',
           '',
           array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
@@ -42,7 +42,7 @@
 
           <?php
           foreach ($resultat as $key => $value) {
-            echo "<strong>" . $value['pseudo'] . ":</strong> " . $value['message'] . "<br>" ;
+          echo "<strong>" . $value['pseudo'] ." le ".date('m/d/Y', strtotime($value['dateMessage'])).":</strong> " . $value['message'] . "<br>" ;
           }
           ?>
 
