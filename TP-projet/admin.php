@@ -20,6 +20,12 @@ try {
 
     $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
 
+    $sth2 = $pdo->prepare("SELECT * FROM categories");
+    $sth2->execute();
+
+
+    $resultat2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
+
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
   }
@@ -35,8 +41,10 @@ try {
     <title>Ma petite boutique</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="public/js/app.js"></script>
 
 
 
@@ -58,17 +66,55 @@ try {
         </div>
     </nav>
 
+    <h2 class="center-align">Ajouter une nouvelle catégorie</h2>
+    <div class="row center-align">
+        <div class="col s2"></div>
+        <div class="col s8">
+            <form action="formCreate/form-categories.php" method="post">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="name">Nom du produit</label>
+                        <input type="text" name="nameCategory" class="validate" />
+                    </div> 
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Ajouter une catégorie
+                        <i class="material-icons right ">add</i>
+                    </button>                 
+                </div>
+            </form>
+        </div>
+        <div class="col s2"></div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Nom de la catégorie</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+<?php foreach ($resultat2 as $key => $value) { ?>
+        <tr>
+            <td><?php echo $value['nameCategory'] ?></td>
+            <td><a href="updateCategory.php?id=<?php echo $value['idCategory'] ?>">Modifier</a></td>
+            <td><a href="deleteCategory.php?id=<?php echo $value['idCategory'] ?>">Supprimer</a></td>
+            <td></td>
+        </tr>
+  <?php  
+    }
+?>
+    </table>
+
     <h2 class="center-align">Ajouter un nouveau produit</h2>
     <div class="row center-align">
         <div class="col s2"></div>
         <div class="col s8">
-            <form action="form-products.php" method="post" enctype="multipart/form-data">
+            <form action="formCreate/form-products.php" method="post" enctype="multipart/form-data">
                 <div class="row">
-                    <div class="input-field col s10">
+                    <div class="input-field col s9">
                         <label for="name">Nom du produit</label>
                         <input type="text" name="name" class="validate" />
                     </div>
-                    <div class="input-field col s2">
+                    <div class="input-field col s3">
                         <label for="name">Prix du produit en €</label>
                         <input type="number" name="price" class="validate" />
                     </div>
@@ -80,9 +126,18 @@ try {
                             <label for="description">Description du produit</label>
                         </div>
                         <div class="input-field col s4">
-                            <label for="name">Catégorie du produit</label>
-                            <input type="text" name="category" class="validate" />
+                            <select name="idCategory">
+                                <option value="" disabled selected>Choisissez la catégorie</option>
+                                <?php foreach ($resultat2 as $key => $value) {?>
+                                    <option value="<?php echo $value['idCategory']?>"><?php echo $value['nameCategory']?></option>
+                                <?php 
+                                }
+                                ?>
+                            </select>
+                            <!-- <label>Materialize Select</label> -->
                         </div>
+                        
+
                     </div>
                     <div class="file-field input-field">
                         <div class="btn">
@@ -115,9 +170,9 @@ try {
             <td><?php echo $value['name'] ?></td>
             <td><?php echo $value['description'] ?></td>
             <td><?php echo $value['price'] ?>€</td>
-            <td><img src="<?php echo $value['image'] ?>" width=50 height=50></td>
-            <td><a href="updateProd.php?id=<?php echo $value['id'] ?>">Modifier</a></td>
-            <td><a href="deleteProd.php?id=<?php echo $value['id'] ?>">Supprimer</a></td>
+            <td><img src="public/<?php echo $value['image'] ?>" width=50 height=50></td>
+            <td><a href="updateProd.php?id=<?php echo $value['idProduct'] ?>">Modifier</a></td>
+            <td><a href="deleteProd.php?id=<?php echo $value['idProduct'] ?>">Supprimer</a></td>
             <td></td>
         </tr>
   <?php  

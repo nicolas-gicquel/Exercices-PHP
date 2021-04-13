@@ -2,7 +2,7 @@
 
 
 //----------------SYSTEME D'UPLOAD D'IMAGES----------------------/
-$target_dir = "uploads/";
+$target_dir = "../public/uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -50,64 +50,32 @@ if ($uploadOk == 0) {
   }
 //---------------------FIN SYSTEME D'UPLOAD D'IMAGES------------------------------/
 
-//3-On crée la base de données//
-$pdo = new PDO('mysql:host=localhost;port=3308','root',''); 
-$sql = "CREATE DATABASE IF NOT EXISTS `miniboutique` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci";
-$pdo->exec($sql);
 
-//4-Creation de la table users//
-try{
-    $pdo = new PDO('mysql:host=localhost;dbname=miniboutique;port=3306','root','',
-    array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
- 
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //Ligne qui permet d'afficher les erreurs s'il y en a.
- 
-    $sql = "CREATE TABLE IF NOT EXISTS `miniboutique`.`products` ( 
-        `id` INT NOT NULL AUTO_INCREMENT , 
-        `name` VARCHAR(50) NOT NULL , 
-        `price` INT(6) NOT NULL ,
-        `description` VARCHAR(255) NOT NULL ,
-        `category` VARCHAR(255) NOT NULL ,
-        `image` VARCHAR(255) NOT NULL ,  
-        `dateMessage` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
-        PRIMARY KEY (`id`)) ENGINE = InnoDB;";
- 
-    $pdo->exec($sql);
- 
-    echo 'Félicitations, la table a bien été créée !';
-    
-}
-  catch (PDOException $e){
-    print "Erreur !: " . $e->getMessage() . "<br/>";
-    die();
- }
-
- //5- On remplit la base de données grâce au formulaire
  try{
     $pdo = new PDO('mysql:host=localhost;dbname=miniboutique;port=3306','root','',
     array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
     
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
    
-    //2- On récupère les données du formulaire
+   
     $name = $_POST['name'];
     $price = $_POST['price'];
     $description = $_POST['description'];
-    $category = $_POST['category'];
+    $idCategory = $_POST['idCategory'];
     $image = "uploads/".$_FILES["fileToUpload"]["name"];
 
 
-   //$sth appartient à la classe PDOStatement
+   
     $sth = $pdo->prepare("
-        INSERT INTO products(name,price,description,category,image)
-        VALUES (:name, :price, :description, :category, :image)
+        INSERT INTO products(name,price,description,idCategory,image)
+        VALUES (:name, :price, :description, :idCategory, :image)
     ");
     
     $sth->execute(array(
                         ':name' => $name,
                         ':price' => $price,
                         ':description' => $description,
-                        ':category' => $category,
+                        ':idCategory' => $idCategory,
                         ':image' => $image));
  
 }
@@ -115,6 +83,6 @@ try{
 catch(PDOException $e){
     echo "Erreur : " . $e->getMessage();
 }
-
-header('location:admin.php');
+die();
+header('location:../admin.php');
 ?>

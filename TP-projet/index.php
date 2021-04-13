@@ -1,33 +1,6 @@
-<?php session_start() ?>
+<?php session_start();
 
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ma petite boutique</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</head>
-
-<body>
-  <nav>
-    <div class="nav-wrapper">
-    <a href="index.php" class="brand-logo"><img class="logo" src='uploads/logo.png' /></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <?php if (isset($_SESSION['pseudo'])) {
-          echo "<li class='hello'>Bonjour " . $_SESSION['pseudo'] . "</h4></li>";
-        } ?>
-        <li><a href="index.php">Ma petite boutique</a></li>
-        <li><a href="login.php">Connexion</a></li>
-      </ul>
-    </div>
-  </nav>
-  <?php
-  try {
+try {
     $pdo = new PDO(
       'mysql:host=localhost;dbname=miniboutique;port=3306',
       'root',
@@ -43,10 +16,48 @@
 
     $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
 
+    $sth2 = $pdo->prepare("SELECT * FROM categories");
+    $sth2->execute();
 
-    //Affichage du tableau des valeurs
+
+    $resultat2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    echo "Erreur : " . $e->getMessage();
+  }
+    ?>
 
 
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ma petite boutique</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="public/css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper">
+    <a href="index.php" class="brand-logo"><img class="logo" src='public/uploads/logo.png' /></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <?php if (isset($_SESSION['pseudo'])) {
+          echo "<li class='hello'>Bonjour " . $_SESSION['pseudo'] . "</h4></li>";
+        } ?>
+        <li><a href="index.php">Ma petite boutique</a></li>
+        <li><a href="login.php">Connexion</a></li>
+      </ul>
+    </div>
+  </nav>
+  <?php
+  
+    //Affichage ess produits
 
     foreach ($resultat as $key => $value) { ?>
 
@@ -54,10 +65,10 @@
         <div class="col s12 m4">
           <div class="card">
             <div class="card-image">
-              <img src="<?php echo $value['image'] ?>">
-              <span class="card-title">Card Title</span>
+              <img src="public/<?php echo $value['image'] ?>">
             </div>
             <div class="card-content">
+            <h5 class="card-title"><?php echo $value['name'] ?></h5>
               <p><?php echo $value['description'] ?></p>
             </div>
             <div class="card-action">
@@ -77,14 +88,7 @@
 
 
 
-    <?php
-  } catch (PDOException $e) {
-    echo "Erreur : " . $e->getMessage();
-  }
-    ?>
-
-
-
+  
     <footer class="page-footer">
       <div class="footer-copyright">
         <div class="container">
