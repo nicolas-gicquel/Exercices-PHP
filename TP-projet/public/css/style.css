@@ -1,25 +1,30 @@
 .card-image img {
-    max-height: 506px;
+  max-height: 506px;
 }
 
 .card .card-action {
-    background-color: #AC8798;
-    height: 55px;
+  background-color: #AC8798;
+  height: 55px;
 }
 
-.card-action span {
-    float: right;
-    font-weight: bolder;
-    color: #fff;
-    font-size: 1.5em;
-    margin-top: -7px;
+.card .card-action span {
+  float: right;
+  font-weight: bolder;
+  color: #fff;
+  font-size: 1.5em;
+  margin-top: -7px;
+}
+
+.card .card-image img {
+  width: 200px;
 }
 
 .hello {
-    font-weight: bolder;
+  font-weight: bolder;
 }
 
 .logo {
-    height: 150px;
-    margin-top: -67px;
+  height: 150px;
+  margin-top: -67px;
 }
+/*# sourceMappingURL=style.css.map */

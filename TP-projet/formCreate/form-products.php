@@ -83,6 +83,6 @@ if ($uploadOk == 0) {
 catch(PDOException $e){
     echo "Erreur : " . $e->getMessage();
 }
-die();
+
 header('location:../admin.php');
 ?>
