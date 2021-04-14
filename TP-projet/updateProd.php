@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $pdo = new PDO(
     'mysql:host=localhost;dbname=miniboutique;port=3306',
     'root',
@@ -28,49 +28,19 @@ $sql2->execute();
 
 
 $resultat2 = $sql2->fetchAll(PDO::FETCH_ASSOC);
+include 'header.php';
+
 ?>
 
 
-<!DOCTYPE html>
-<html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ma mini boutique</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="../public/css/style.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-</head>
-
-<body>
-    <nav>
-        <div class="nav-wrapper">
-            <a href="index.php" class="brand-logo"><img class="logo" src='uploads/logo.png' /></a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <?php if (isset($_SESSION['pseudo'])) {
-                    echo "<li class='hello'>Bonjour " . $_SESSION['pseudo'] . "</h4></li>";
-                } ?>
-                <li><a href="index.php">Ma petite boutique</a></li>
-                <li><a href="admin.php">Tableau de bord</a></li>
-                <li><a href="logout.php">Déconnexion</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <ul class="sidenav" id="mobile-demo">
-        <li><a href="index.php">Ma petite boutique</a></li>
-        <li><a href="logout.php">Déconnexion</a></li>
-    </ul>
 
     <?php foreach ($resultat1 as $key => $value) { ?>
         <h2 class="center-align">Modifier un produit</h2>
         <div class="row center-align">
             <div class="col s2"></div>
             <div class="col s8">
-                <form action="../formUpdate/form-update-products.php?id=<?php echo $_GET['id'] ?>" method="post" enctype="multipart/form-data">
+                <form action="formUpdate/form-update-products.php?id=<?php echo $_GET['id'] ?>" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="input-field col s10">
                             <label for="name">Nom du produit</label>
@@ -106,7 +76,7 @@ $resultat2 = $sql2->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <div class="row">
                             <div class="col s4 imageUpdate">
-                            <img src="../public/<?php echo $value['image'] ?>">
+                            <img src="public/<?php echo $value['image'] ?>">
                             </div>
                             <div class="file-field input-field col s8">
                                 <div class="btn">

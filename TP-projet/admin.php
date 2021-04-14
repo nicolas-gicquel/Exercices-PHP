@@ -35,42 +35,9 @@ try {
     echo "Erreur : " . $e->getMessage();
 }
 
+include 'header.php';
+
 ?>
-
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ma petite boutique</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="public/css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-
-
-
-</head>
-
-<body>
-
-    <nav>
-        <div class="nav-wrapper">
-            <a href="index.php" class="brand-logo"><img class="logo" src='uploads/logo.png' /></a>
-
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <?php if (isset($_SESSION['pseudo'])) {
-                    echo "<li class='hello'>Bonjour " . $_SESSION['pseudo'] . "</h4></li>";
-                } ?>
-                <li><a href="index.php">Ma petite boutique</a></li>
-                <li><a href="logout.php">Déconnexion</a></li>
-            </ul>
-        </div>
-    </nav>
-
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
@@ -110,7 +77,7 @@ try {
                     <tr>
                         <td><?php echo $value['nameCategory'] ?></td>
                         <td><a href="updateCategory.php?id=<?php echo $value['idCategory'] ?>">Modifier</a></td>
-                        <td><a href="deleteCategory.php?id=<?php echo $value['idCategory'] ?>">Supprimer</a></td>
+                        <td><a href="formDelete/deleteCategory.php?id=<?php echo $value['idCategory'] ?>">Supprimer</a></td>
                         <td></td>
                     </tr>
                 <?php
@@ -185,8 +152,8 @@ try {
                         <td><?php echo $value['description'] ?></td>
                         <td><?php echo $value['price'] ?>€</td>
                         <td><img src="public/<?php echo $value['image'] ?>" width=50 height=50></td>
-                        <td><a href="formUpdate/updateProd.php?id=<?php echo $value['idProduct'] ?>">Modifier</a></td>
-                        <td><a href="formDelete/deleteProd.php?id=<?php echo $value['idProduct'] ?>">Supprimer</a></td>
+                        <td><a href="updateProd.php?id=<?php echo $value['idProduct'] ?>">Modifier</a></td>
+                        <td><a href="formDelete/deleteProduct.php?id=<?php echo $value['idProduct'] ?>">Supprimer</a></td>
                         <td></td>
                     </tr>
                 <?php
