@@ -25,6 +25,12 @@ try {
 
 
     $resultat2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
+
+    $sth3 = $pdo->prepare("SELECT * FROM users");
+    $sth3->execute();
+
+
+    $resultat3 = $sth3->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }
@@ -81,7 +87,7 @@ try {
                     <form action="formCreate/form-categories.php" method="post">
                         <div class="row">
                             <div class="input-field col s12">
-                                <label for="name">Nom du produit</label>
+                                <label for="name">Nom de la catégorie de produit</label>
                                 <input type="text" name="nameCategory" class="validate" />
                             </div>
                             <button class="btn waves-effect waves-light" type="submit" name="action">Ajouter une catégorie
@@ -143,7 +149,6 @@ try {
                                         }
                                         ?>
                                     </select>
-                                    <!-- <label>Materialize Select</label> -->
                                 </div>
 
 
@@ -180,8 +185,8 @@ try {
                         <td><?php echo $value['description'] ?></td>
                         <td><?php echo $value['price'] ?>€</td>
                         <td><img src="public/<?php echo $value['image'] ?>" width=50 height=50></td>
-                        <td><a href="updateProd.php?id=<?php echo $value['idProduct'] ?>">Modifier</a></td>
-                        <td><a href="deleteProd.php?id=<?php echo $value['idProduct'] ?>">Supprimer</a></td>
+                        <td><a href="formUpdate/updateProd.php?id=<?php echo $value['idProduct'] ?>">Modifier</a></td>
+                        <td><a href="formDelete/deleteProd.php?id=<?php echo $value['idProduct'] ?>">Supprimer</a></td>
                         <td></td>
                     </tr>
                 <?php
@@ -217,6 +222,26 @@ try {
                 </div>
                 <div class="col s2"></div>
             </div>
+            <table>
+                <tr>
+                    <th>Nom de l'utilisateur</th>
+                    <th>Date d'inscriptions</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <?php foreach ($resultat3 as $key => $value) { ?>
+                    <tr>
+                        <td><?php echo $value['pseudo'] ?></td>
+                        <td><?php echo $value['dateCreation'] ?></td>
+                        <td><a href="updateUser.php?id=<?php echo $value['idUser'] ?>">Modifier</a></td>
+                        <td><a href="deleteUser.php?id=<?php echo $value['idUser'] ?>">Supprimer</a></td>
+                        <td></td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </table>
         </div>
     </div>
     <footer class="page-footer">

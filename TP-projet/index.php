@@ -61,6 +61,7 @@ try {
 
     foreach ($resultat as $key => $value) { ?>
 
+      <a href="singleProduct?id=<?php echo $value['idProduct'] ?>">
       <div class="row">
         <div class="col s12 m4">
           <div class="card">
@@ -76,6 +77,7 @@ try {
             </div>
           </div>
         </div>
+        </a>
 
 
 

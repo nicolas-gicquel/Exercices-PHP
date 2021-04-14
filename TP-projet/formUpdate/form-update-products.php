@@ -10,7 +10,7 @@ try{
     $name = $_POST['name'];
     $price = $_POST['price'];
     $description = $_POST['description'];
-    $category = $_POST['category'];
+    $category = $_POST['idCategory'];
 
 
     if ($_FILES["fileToUpload"]['name'] != '') {
@@ -23,7 +23,7 @@ try{
 
    //$sth appartient à la classe PDOStatement
     $sth = $pdo->prepare(
-    "UPDATE `products` SET `name` = '$name', `price` = '$price', `description` = '$description', `category` = '$category', `image` = '$image' WHERE `products`.`id` = $id");
+    "UPDATE `products` SET `name` = '$name', `price` = '$price', `description` = '$description', `idCategory` = '$category', `image` = '$image' WHERE idProduct = $id");
     
     $sth->execute();
  
@@ -33,4 +33,4 @@ catch(PDOException $e){
     echo "Erreur : " . $e->getMessage();
 }
 
-header('location:admin.php');
+header('location:../admin.php');
