@@ -28,7 +28,7 @@ if (isset($_SESSION['pseudo'])) {
     <div class="row center-align">
         <div class="col s2"></div>
         <div class="col s8">
-            <form action="form-login.php" method="post" enctype="multipart/form-data">
+            <form action="formCreate/form-login.php" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="input-field col s12">
                         <label for="name">Pseudo</label>

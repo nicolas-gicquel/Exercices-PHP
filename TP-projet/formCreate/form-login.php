@@ -31,11 +31,11 @@ else
         $_SESSION['id'] = $resultat['id'];
         $_SESSION['pseudo'] = $pseudo;
         echo 'Vous êtes connecté !';
-        header('location:admin.php');
+        header('location:../admin.php');
     }
     else {
         echo 'Mauvais identifiant ou mot de passe !';
-        header('location:login.php');
+        header('location:../login.php');
     }
 }
 
