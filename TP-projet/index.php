@@ -43,7 +43,10 @@ include 'header.php';?>
               <p><?php echo $value['description'] ?></p>
             </div>
             <div class="card-action">
+            <a class="buy-btn waves-effect waves-light btn" href="panier.php?action=ajout&n=<?php echo $value['name'] ?>&q=1&p=<?php echo $value['price']?>" onclick="window.open(this.href, '', 
+'toolbar=no, location=no, directories=no, status=yes, scrollbars=yes, resizable=yes, copyhistory=no, width=600, height=350'); return false;"><i class="material-icons right">euro_symbol</i>Acheter</a>
               <span><?php echo $value['price'] . "€" ?></span>
+
             </div>
           </div>
         </div>

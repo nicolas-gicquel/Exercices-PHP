@@ -49,4 +49,9 @@ footer {
 .sectionProducts {
   margin: 50px;
 }
+
+.buy-btn {
+  position: relative;
+  bottom: 8px;
+}
 /*# sourceMappingURL=style.css.map */
