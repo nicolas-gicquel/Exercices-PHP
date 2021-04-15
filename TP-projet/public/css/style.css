@@ -1,3 +1,13 @@
+html {
+  height: 100%;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 .card-image img {
   max-height: 506px;
 }
@@ -16,7 +26,11 @@
 }
 
 .card .card-image img {
-  width: 200px;
+  height: 200px;
+  display: block;
+  margin: auto;
+  margin: auto;
+  width: auto;
 }
 
 .hello {
@@ -30,5 +44,9 @@
 
 .imageUpdate img {
   width: 50px;
+}
+
+.sectionProducts {
+  margin: 50px;
 }
 /*# sourceMappingURL=style.css.map */

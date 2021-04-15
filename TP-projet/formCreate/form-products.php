@@ -60,6 +60,7 @@ if ($uploadOk == 0) {
    
     $name = $_POST['name'];
     $price = $_POST['price'];
+    $stock = $_POST['stock'];
     $description = $_POST['description'];
     $idCategory = $_POST['idCategory'];
     $image = "uploads/".$_FILES["fileToUpload"]["name"];
@@ -67,12 +68,13 @@ if ($uploadOk == 0) {
 
    
     $sth = $pdo->prepare("
-        INSERT INTO products(name,price,description,idCategory,image)
-        VALUES (:name, :price, :description, :idCategory, :image)
+        INSERT INTO products(name,stock,price,description,idCategory,image)
+        VALUES (:name, :stock, :price, :description, :idCategory, :image)
     ");
     
     $sth->execute(array(
                         ':name' => $name,
+                        ':stock' => $stock,
                         ':price' => $price,
                         ':description' => $description,
                         ':idCategory' => $idCategory,

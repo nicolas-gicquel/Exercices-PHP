@@ -38,6 +38,7 @@ try {
 include 'header.php';
 
 ?>
+
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
@@ -92,11 +93,15 @@ include 'header.php';
                 <div class="col s8">
                     <form action="formCreate/form-products.php" method="post" enctype="multipart/form-data">
                         <div class="row">
-                            <div class="input-field col s9">
+                            <div class="input-field col s8">
                                 <label for="name">Nom du produit</label>
                                 <input type="text" name="name" class="validate" />
                             </div>
-                            <div class="input-field col s3">
+                            <div class="input-field col s2">
+                                <label for="name">Quantité en stock</label>
+                                <input type="number" name="stock" class="validate" />
+                            </div>
+                            <div class="input-field col s2">
                                 <label for="name">Prix du produit en €</label>
                                 <input type="number" name="price" class="validate" />
                             </div>
@@ -141,6 +146,7 @@ include 'header.php';
                 <tr>
                     <th>Nom du produit</th>
                     <th>Description</th>
+                    <th>Stock</th>
                     <th>Prix</th>
                     <th></th>
                     <th></th>
@@ -150,6 +156,7 @@ include 'header.php';
                     <tr>
                         <td><?php echo $value['name'] ?></td>
                         <td><?php echo $value['description'] ?></td>
+                        <td><?php echo $value['stock'] ?></td>
                         <td><?php echo $value['price'] ?>€</td>
                         <td><img src="public/<?php echo $value['image'] ?>" width=50 height=50></td>
                         <td><a href="updateProd.php?id=<?php echo $value['idProduct'] ?>">Modifier</a></td>
@@ -211,21 +218,22 @@ include 'header.php';
             </table>
         </div>
     </div>
-    <footer class="page-footer">
-        <div class="footer-copyright">
-            <div class="container">
-                © 2020 Copyright Text
-                <a class="grey-text text-lighten-4 right" href="#!">Créé par Nicolas Gicquel - Arinfo Saint Nazaire</a>
-            </div>
+
+<footer class="page-footer">
+    <div class="footer-copyright">
+        <div class="container">
+            © 2020 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">Créé par Nicolas Gicquel - Arinfo Saint Nazaire</a>
         </div>
-    </footer>
-    <script src="public/js/app.js"></script>
-    <script>
-        //Système d'onglets de Materialize
-        $(document).ready(function() {
-            $('.tabs').tabs();
-        });
-    </script>
+    </div>
+</footer>
+<script src="public/js/app.js"></script>
+<script>
+    //Système d'onglets de Materialize
+    $(document).ready(function() {
+        $('.tabs').tabs();
+    });
+</script>
 </body>
 
 </html>

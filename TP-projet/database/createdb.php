@@ -48,6 +48,7 @@ try {
   $sql = "CREATE TABLE IF NOT EXISTS `miniboutique`.`products` ( 
   `idProduct` INT NOT NULL AUTO_INCREMENT , 
   `name` VARCHAR(50) NOT NULL , 
+  `stock` INT(10) NOT NULL ,
   `price` INT(6) NOT NULL ,
   `description` VARCHAR(255) NOT NULL ,
   `image` VARCHAR(255) NOT NULL ,  

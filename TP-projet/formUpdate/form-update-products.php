@@ -8,9 +8,10 @@ try{
     //2- On récupère les données du formulaire
     $id = $_GET['id'];
     $name = $_POST['name'];
+    $stock = $_POST['stock'];
     $price = $_POST['price'];
     $description = $_POST['description'];
-    $category = $_POST['idCategory'];
+    $idCategory = $_POST['idCategory'];
 
 
     if ($_FILES["fileToUpload"]['name'] != '') {
@@ -22,10 +23,15 @@ try{
 
 
    //$sth appartient à la classe PDOStatement
-    $sth = $pdo->prepare(
-    "UPDATE `products` SET `name` = '$name', `price` = '$price', `description` = '$description', `idCategory` = '$category', `image` = '$image' WHERE idProduct = $id");
-    
-    $sth->execute();
+    $sth = $pdo->prepare("UPDATE products SET name = :name, stock = :stock, price = :price, description = :description, idCategory = :idCategory, image = :image WHERE idProduct = $id");
+    var_dump($sth);
+    $sth->execute(array(
+        ':name' => $name,
+        ':stock' => $stock,
+        ':price' => $price,
+        ':description' => $description,
+        ':idCategory' => $idCategory,
+        ':image' => $image));
  
 }
      

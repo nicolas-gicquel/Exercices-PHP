@@ -25,11 +25,11 @@ try {
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
   }
-include 'header.php';
+include 'header.php';?>
   
-    //Affichage ess produits
 
-    foreach ($resultat as $key => $value) { ?>
+    <section class="sectionProducts">
+    <?php foreach ($resultat as $key => $value) { ?>
 
       <a href="singleProduct?id=<?php echo $value['idProduct'] ?>">
       <div class="row">
@@ -60,7 +60,7 @@ include 'header.php';
 
 
 
-  
+    </section>
     <footer class="page-footer">
       <div class="footer-copyright">
         <div class="container">

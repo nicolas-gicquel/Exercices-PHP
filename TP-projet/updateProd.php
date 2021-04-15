@@ -42,9 +42,13 @@ include 'header.php';
             <div class="col s8">
                 <form action="formUpdate/form-update-products.php?id=<?php echo $_GET['id'] ?>" method="post" enctype="multipart/form-data">
                     <div class="row">
-                        <div class="input-field col s10">
+                        <div class="input-field col s8">
                             <label for="name">Nom du produit</label>
                             <input type="text" name="name" class="validate" value="<?php echo $value['name'] ?>" />
+                        </div>
+                        <div class="input-field col s2">
+                            <label for="name">Stock</label>
+                            <input type="number" name="stock" class="validate" value="<?php echo $value['stock'] ?>" />
                         </div>
                         <div class="input-field col s2">
                             <label for="name">Prix en €</label>
@@ -90,7 +94,7 @@ include 'header.php';
                         </div>
 
                         <input type="hidden" name="urlImage" value="<?php echo $value['image'] ?>"></input>
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Ajouter le produit
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Modifier le produit
                             <i class="material-icons right ">add</i>
                         </button>
                     </form>
