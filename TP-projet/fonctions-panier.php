@@ -5,7 +5,7 @@ function creationPanier(){
       $_SESSION['panier']['name'] = array();
       $_SESSION['panier']['quantity'] = array();
       $_SESSION['panier']['price'] = array();
-      $_SESSION['panier']['finalisation'] = false;
+
    }
    return true;
 }
@@ -13,7 +13,7 @@ function creationPanier(){
 function ajouterArticle($name,$quantity,$price){
 
     //Si le panier existe
-    if (creationPanier() && !isVerrouille())
+    if (creationPanier())
     {
        //Si le produit existe déjà on ajoute seulement la quantité
        $positionProduit = array_search($name,  $_SESSION['panier']['name']);
@@ -37,14 +37,13 @@ function ajouterArticle($name,$quantity,$price){
 
  function supprimerArticle($name){
     //Si le panier existe
-    if (creationPanier() && !isVerrouille())
+    if (creationPanier())
     {
        //Nous allons passer par un panier temporaire
        $tmp=array();
        $tmp['name'] = array();
        $tmp['quantity'] = array();
        $tmp['price'] = array();
-       $tmp['finalisation'] = $_SESSION['panier']['finalisation'];
  
        for($i = 0; $i < count($_SESSION['panier']['name']); $i++)
        {
@@ -68,7 +67,7 @@ function ajouterArticle($name,$quantity,$price){
 
  function modifierQTeArticle($name,$quantity){
     //Si le panier existe
-    if (creationPanier() && !isVerrouille())
+    if (creationPanier())
     {
        //Si la quantité est positive on modifie sinon on supprime l'article
        if ($quantity > 0)
@@ -97,22 +96,6 @@ function ajouterArticle($name,$quantity,$price){
     return $total;
  }
 
- function isVerrouille(){
-    if (isset($_SESSION['panier']) && $_SESSION['panier']['finalisation'])
-    return true;
-    else
-    return false;
- }
-
- function compterArticles()
-{
-   if (isset($_SESSION['panier']))
-   return count($_SESSION['panier']['name']);
-   else
-   return 0;
-
-}
-
-function supprimePanier(){
-    unset($_SESSION['panier']);
- }
+// function supprimePanier(){
+//     unset($_SESSION['panier']);
+//  }
