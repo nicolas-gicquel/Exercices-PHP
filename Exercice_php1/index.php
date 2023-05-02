@@ -226,12 +226,13 @@ while ($i < 45000) {
 <h3>Avec for</h3>
 
 <?php
+$j = 0;
 $nb2 = 152;
 for ($essais = 0; $j != $nb2; $essais++) {
     $j = rand(100, 999);
     echo $j . '<br>';
 }
-echo $essais . ' essais pour trouver ' . $nb;
+echo $essais . ' essais pour trouver ' . $nb2;
     
 ?>
 </body>
