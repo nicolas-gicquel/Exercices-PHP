@@ -44,7 +44,5 @@ if (!empty($_POST)) { ?>
 
 </main>
 
-<?php
-    require 'footer.php';
-?>
+
 
