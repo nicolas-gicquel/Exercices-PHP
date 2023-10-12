@@ -71,7 +71,7 @@ if (!empty($_POST)) { ?>
 
 
     </div>
-    <form action="index.php?faces=<?php echo $faces ?>" method="post">
+    <form action="index.php?faces=<?= $faces ?>" method="post">
         <label class="txt-center" for="select">choisissez le nombre de dés</label>
         <select class="form-control rounded-1" id="select" name="nbdes">
             <option>1</option>
@@ -85,7 +85,7 @@ if (!empty($_POST)) { ?>
             <option>9</option>
             <option>10</option>
         </select>
-        <!-- <input type="hidden" name="result" value="<?php echo rand(1, $faces) ?>"> -->
+        <!-- <input type="hidden" name="result" value="<?= rand(1, $faces) ?>"> -->
         <input class="submit btn shadow-1 rounded-1 large primary uppercase" type="submit" value="Lancer le dé">
     </form>
 
