@@ -21,9 +21,9 @@
 <div class="circleCenter">
 <?php
 
-if (!empty($_POST)) { ?>
+if ($_POST) { ?>
         <div class='total'>
-            <span><?php echo $result ?></span>
+            <span><?=  $result ?></span>
         </div>
 <?php
     };
@@ -32,13 +32,6 @@ if (!empty($_POST)) { ?>
 
 </div>
 <form action="index.php?faces=<?php echo $faces ?>" method="post">
-<!-- <label class="txt-center" for="select">choisissez le nombre de dés</label>
-    <select class="form-control rounded-1" id="select">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-    </select> -->
-    <input type="hidden" name="result" value="<?php echo rand(1,$faces)?>">
     <input class="submit btn shadow-1 rounded-1 large primary uppercase" type="submit" value="Lancer le dé">
 </form>
 

@@ -28,6 +28,7 @@
     <a class="navbar-link" href="index.php?faces=8">8 faces</a>
     <a class="navbar-link" href="index.php?faces=10">10 faces</a>
     <a class="navbar-link" href="index.php?faces=20">20 faces</a>
+    <a class="navbar-link" href="index.php?faces=100">100 faces</a>
   </div>
   <a href="#" class="navbar-logo ml-auto">
     <img src="images/8243.png" alt="logo" />
