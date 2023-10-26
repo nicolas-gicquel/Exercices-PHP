@@ -10,9 +10,10 @@
 
     
 
-    <form action="form.php" method="post">
+    <form action="form.php" method="post" enctype="multipart/form-data">
         <input type="text" name="titre" >
         <textarea name="contenu"  cols="30" rows="10">Entrez le contenu du post</textarea>
+        <input type="file" name="image" id="">
         <input type="submit" value="Créer">
     </form>
 </body>

@@ -64,7 +64,7 @@ try {
                         $date = strftime('%d/%m/%Y à %Hh%M', strtotime($value2['dateMessage']));
                         if ($value1['id'] == $value2['id_post']) {
 
-
+                            
                     ?>
 
                             <div class='commentHeader'>

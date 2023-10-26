@@ -23,8 +23,14 @@ try{
 
 
    //$sth appartient à la classe PDOStatement
-    $sth = $pdo->prepare("UPDATE products SET name = :name, stock = :stock, price = :price, description = :description, idCategory = :idCategory, image = :image WHERE idProduct = $id");
-    var_dump($sth);
+    $sth = $pdo->prepare("UPDATE products SET   name = :name, 
+                                                stock = :stock, 
+                                                price = :price, 
+                                                description = :description, 
+                                                idCategory = :idCategory, 
+                                                image = :image 
+                        WHERE idProduct = $id");
+
     $sth->execute(array(
         ':name' => $name,
         ':stock' => $stock,
